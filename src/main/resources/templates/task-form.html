@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="fragments/bootstrapcdn"></div>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1><span th:text="${tasklist.tasklistName}">Tasklist</span>: New To-Do</h1>
+		</div>
+		<form th:action="@{/lists/} + ${tasklist.id} + @{/tasks/processTask}" th:object="${task}"
+			th:method="post">
+			<div class="form-group">
+				<input th:type="hidden" th:field="*{id}">
+			</div>
+			<div class="form-group">
+				<label for="taskName">To-Do Name</label> <input th:type="text"
+					th:field="*{taskName}" class="form-control" id="taskName" />
+				<div th:if="${#fields.hasErrors('taskName')}"
+					th:errors="*{taskName}">Name Error</div>
+			</div>
+			<div class="form-group">
+				<label for="taskNotes">Notes</label> <input th:type="text"
+					th:field="*{taskNotes}" class="form-control" id="taskNotes"/>
+				<div th:if="${#fields.hasErrors('taskNotes')}"
+					th:errors="*{taskNotes}">Notes Error</div>
+			</div>
+			<div class="form-group">
+				<label for="dueDate">Due Date</label> : Current Date
+							<span th:text="${#dates.format(#dates.createNow(), 'MM/dd/yyyy')}">Date</span>
+				 <input type="text"	th:field="*{dueDate}" placeholder="MM/dd/yyyy" class="form-control" id="dueDate"/>
+				<div th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}">Date
+					Error</div>
+			</div>
+
+
+
+			<div class="addbutton">
+				<button class="btn btn-md btn-primary" type="submit">Add
+					To-Do</button>
+			</div>
+			<div th:if="${success}">
+				<h3>
+					<span  th:text="${success}"></span>
+				</h3>
+			</div>
+		</form>
+		
+		<br><br>
+		
+		<form th:action="@{/lists/} + ${tasklist.id} + @{/tasks}" th:method="get">
+			<button class="btn btn-md btn-secondary" type="Submit" value="Submit">Show
+				To-Do's</button>
+		</form>
+	</div>
+
+	<div th:replace="fragments/scripts"></div>
+
+</body>
+
+</html>

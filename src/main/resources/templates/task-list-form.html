@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="fragments/bootstrapcdn"></div>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>New Do This List</h1>
+		</div>
+		<form th:action="@{/lists/processList}" th:object="${tasklist}"
+			th:method="post">
+			<div class="form-group">
+				<input th:type="hidden" th:field="*{id}">
+			</div>
+			<div class="form-group">
+				<label for="tasklistName">Do This List Name</label> <input th:type="text"
+					th:field="*{tasklistName}" class="form-control" id="tasklistName" />
+				<div th:if="${#fields.hasErrors('tasklistName')}"
+					th:errors="*{tasklistName}">Name Error</div>
+			</div>
+
+
+			<div class="addbutton">
+				<button class="btn btn-md btn-primary" type="submit">Add
+					Do This List</button>
+			</div>
+			<div th:if="${success}">
+				<h3>
+					<span  th:text="${success}"></span>
+				</h3>
+			</div>
+		</form>
+		
+		<br><br>
+		
+		<form th:action="@{/lists}" th:method="get">
+			<button class="btn btn-md btn-secondary" type="Submit" value="Submit">Show
+				Do This lists</button>
+		</form>
+	</div>
+
+	<div th:replace="fragments/scripts"></div>
+
+</body>
+
+</html>
