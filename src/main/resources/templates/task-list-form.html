@@ -3,21 +3,21 @@
 
 <head>
 	<div th:replace="fragments/bootstrapcdn"></div>
-
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 	<div class="container">
 		<div class="header">
-			<h1>New Do This List</h1>
+			<h1>New To-Do List</h1>
 		</div>
 		<form th:action="@{/lists/processList}" th:object="${tasklist}"
 			th:method="post">
 			<div class="form-group">
 				<input th:type="hidden" th:field="*{id}">
 			</div>
-			<div class="form-group">
-				<label for="tasklistName">Do This List Name</label> <input th:type="text"
+			<div class="form-group form-dark">
+				<label for="tasklistName">To-Do List Name</label> <input th:type="text"
 					th:field="*{tasklistName}" class="form-control" id="tasklistName" />
 				<div th:if="${#fields.hasErrors('tasklistName')}"
 					th:errors="*{tasklistName}">Name Error</div>
@@ -25,8 +25,8 @@
 
 
 			<div class="addbutton">
-				<button class="btn btn-md btn-primary" type="submit">Add
-					Do This List</button>
+				<button class="btn btn-md btn-secondary" type="submit">Add
+					To-Do List</button>
 			</div>
 			<div th:if="${success}">
 				<h3>
@@ -39,7 +39,7 @@
 		
 		<form th:action="@{/lists}" th:method="get">
 			<button class="btn btn-md btn-secondary" type="Submit" value="Submit">Show
-				Do This lists</button>
+				To-Do lists</button>
 		</form>
 	</div>
 

@@ -66,7 +66,7 @@ public class TaskListController {
 	@GetMapping("/lists/{tasklist_id}/tasks")
 	public String getlist(@PathVariable("tasklist_id") Long id, Model theModel) {
 		Tasklist taskList = tasklistService.getTasklistById(id);
-		List<Task> tasks = taskService.getAllTasksByTasklistId(id);
+		List<Task> tasks = taskService.sortTasks(taskList.getTasks());
 		theModel.addAttribute("tasklist", taskList);
 		theModel.addAttribute("tasks",tasks);
 		return "task-list";

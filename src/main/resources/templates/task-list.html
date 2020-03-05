@@ -3,7 +3,7 @@
 
 <head>
 	<div th:replace="fragments/bootstrapcdn" />
-
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -15,11 +15,17 @@
 			<div class="col-2">
 		 <form th:action="@{/lists/}+${tasklist.id} + @{/tasks/addTask}" th:method="get">
 			<button class="btn btn-md btn-secondary" type="Submit" value="Submit">New
-				to-do</button>
+				To-Do</button>
+		</form>
+		</div>
+		<div class="col-2">
+		 <form th:action="@{/lists/}" th:method="get">
+			<button class="btn btn-md btn-secondary" type="Submit" value="Submit">All
+				To-Do Lists</button>
 		</form>
 		</div>
 		</div>
-		<table class="table">
+		<table class="table table-dark">
     <thead>
         <tr>
             <th scope="col">Due date</th>

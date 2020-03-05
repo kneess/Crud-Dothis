@@ -1,5 +1,6 @@
 package com.anibal.dothis.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,10 @@ public class TaskService {
 	
 	public void deleteTaskFromList(Long id) {
 		repository.deleteById(id);
+	}
+
+	public List<Task> sortTasks(List<Task> tasks){
+		Collections.sort(tasks);
+		return tasks;
 	}
 }

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tasklist")
-public class Tasklist {
+public class Tasklist{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -63,4 +63,5 @@ public class Tasklist {
 	public String toString() {
 		return "Tasklist [id=" + id + ", tasklistName=" + tasklistName + "]";
 	}
+	
 }

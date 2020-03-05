@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="task")
-public class Task {
+public class Task implements Comparable<Task>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -98,4 +98,16 @@ public class Task {
 		return "Task [id=" + id + ", taskName=" + taskName + ", taskNotes=" + taskNotes + ", dueDate="
 				+ dueDate + "]";
 	}
+
+	@Override
+	public int compareTo(Task task) {
+		if(this.dueDate.after(task.dueDate)) {
+			return 1;
+		} else if(this.dueDate.before(task.dueDate)) {
+			return -1;
+		} else {			
+			return 0;
+		}
+	}
+
 }
