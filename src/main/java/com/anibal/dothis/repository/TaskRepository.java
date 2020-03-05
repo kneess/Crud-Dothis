@@ -10,6 +10,7 @@ import com.anibal.dothis.model.Task;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
+	List<Task> findAll();
 	Task findTaskById(Long id);
 	Task findTaskByTaskName(String taskName);
 	List<Task> findAllByTasklistIdOrderByDueDateAsc(Long id);

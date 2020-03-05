@@ -18,6 +18,10 @@ public class TaskService {
 		repository = theRepository;
 	}
 	
+	public List<Task> getAllTasks(){
+		return repository.findAll();
+	}
+	
 	public Task getTaskById(Long id) {
 		return repository.findTaskById(id);
 	}
@@ -26,7 +30,7 @@ public class TaskService {
 		return repository.findTaskByTaskName(taskName);
 	}
 	
-	public List<Task> getAllTasks(Long id){
+	public List<Task> getAllTasksByTasklistId(Long id){
 		return repository.findAllByTasklistIdOrderByDueDateAsc(id);
 	}
 	
