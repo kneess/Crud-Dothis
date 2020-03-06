@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -67,6 +68,7 @@ public class TaskListController {
 	public String getlist(@PathVariable("tasklist_id") Long id, Model theModel) {
 		Tasklist taskList = tasklistService.getTasklistById(id);
 		List<Task> tasks = taskService.sortTasks(taskList.getTasks());
+//		List<Task> upperCaseTasks = taskService.allTaskNamesToUpperCaseLambda(tasks);
 		theModel.addAttribute("tasklist", taskList);
 		theModel.addAttribute("tasks",tasks);
 		return "task-list";
@@ -82,7 +84,7 @@ public class TaskListController {
 	
 //	get mapping to post a task to the list
 	@PostMapping("/lists/{tasklist_id}/tasks/processTask")
-	public String addtasktolist(@Valid Task task, BindingResult bindingResult,
+	public String addtasktolist(@Valid @ModelAttribute("task") Task task, BindingResult bindingResult,
 			@PathVariable("tasklist_id") Long id, Model model){
 		
 		Tasklist taskList = tasklistService.getTasklistById(id);

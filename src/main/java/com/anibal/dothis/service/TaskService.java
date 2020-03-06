@@ -42,6 +42,14 @@ public class TaskService {
 	public void deleteTaskFromList(Long id) {
 		repository.deleteById(id);
 	}
+	
+//	public List<Task> allTaskNamesToUpperCaseLambda(List<Task> tasks){
+//		tasks.forEach((t) -> {
+//			t.setTaskName(t.getTaskName().toUpperCase());
+//			}
+//		);
+//		return tasks;
+//	}
 
 	public List<Task> sortTasks(List<Task> tasks){
 		Collections.sort(tasks);

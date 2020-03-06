@@ -65,7 +65,7 @@ public class Task implements Comparable<Task>{
 	}
 
 	public void setTaskName(String taskName) {
-		this.taskName = taskName;
+		this.taskName = taskName.toUpperCase();
 	}
 
 	public String getTaskNotes() {

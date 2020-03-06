@@ -1,3 +1,7 @@
 body{
 	background-color: #563d7c;
 }
+
+.dueNow{
+	color:red;
+}
