@@ -38,6 +38,7 @@
             <td colspan="2"> No to-do's Available </td>
         </tr>
         <tr th:each="task : ${tasks}">
+        
             <td th:if="${#dates.format(task.dueDate, 'MM/dd/yyyy')} > ${#dates.format(#dates.createNow(), 'MM/dd/yyyy')}">
             <span th:text="${#dates.format(task.dueDate, 'MMM-dd-yyyy')}"> Date </span></td>
             
@@ -45,7 +46,10 @@
             <span th:text="${#dates.format(task.dueDate, 'MMM-dd-yyyy')}"> Date </span></td>
             
             <td><span th:text="${task.taskName}"> Name </span></td>
-            <td><span th:text="${task.taskNotes}"> Notes </span></td>
+            
+            <td th:if="${task.taskNotes} != ''"><span th:text="${task.taskNotes}"> Notes </span></td>
+            <td th:if="${task.taskNotes} == ''"><span> N/A </span></td>
+            
             <td>		
             	<form th:action="@{/lists/}+ ${tasklist.id} + @{/tasks/} + ${task.id}" th:method="get">
 				<button class="btn btn-md btn-secondary" type="Submit" value="Submit">Edit to-do</button>

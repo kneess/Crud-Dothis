@@ -1,7 +1,11 @@
 body{
-	background-color: #563d7c;
+	background-image: url("/images/background.jpg");
 }
 
 .dueNow{
 	color:red;
+}
+
+h1{
+	color: white;
 }
