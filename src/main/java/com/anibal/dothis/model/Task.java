@@ -32,7 +32,7 @@ public class Task implements Comparable<Task>{
 	@Column(name="task_notes")
 	private String taskNotes;
 	
-	@NotNull(message="Enter in a date. (include forward slashes) Format: dd/MM/yyyy")
+	@NotNull(message="Enter in a date. (include forward slashes) Format: MM/dd/yyyy")
 	@Column(name="due_date")
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date dueDate;

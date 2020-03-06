@@ -19,19 +19,19 @@
 			<div class="form-group form-dark">
 				<label for="tasklistName">To-Do List Name</label> <input th:type="text"
 					th:field="*{tasklistName}" class="form-control" id="tasklistName" />
-				<div th:if="${#fields.hasErrors('tasklistName')}"
+				<div class="error" th:if="${#fields.hasErrors('tasklistName')}"
 					th:errors="*{tasklistName}">Name Error</div>
+			</div>
+			<div th:if="${success}">
+				<h3>
+					<span  th:text="${success}"></span>
+				</h3>
 			</div>
 
 
 			<div class="addbutton">
 				<button class="btn btn-md btn-secondary" type="submit">Add
 					To-Do List</button>
-			</div>
-			<div th:if="${success}">
-				<h3>
-					<span  th:text="${success}"></span>
-				</h3>
 			</div>
 		</form>
 		

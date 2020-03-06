@@ -6,10 +6,6 @@ body{
 	color:red;
 }
 
-h1{
-	color: white;
-}
-
-label{
+label, h1, h3, .error{
 	color: white;
 }

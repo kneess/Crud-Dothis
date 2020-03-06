@@ -51,7 +51,7 @@ public class TaskListController {
 		
 		if(!bindingResult.hasErrors()) {
 			tasklistService.saveTasklist(list);
-			model.addAttribute("success","tasklist added successfully!");
+			model.addAttribute("success","To-Do list added successfully!");
 			model.addAttribute("tasklist", new Tasklist());
 		}
 		return "task-list-form";
