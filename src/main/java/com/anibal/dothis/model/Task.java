@@ -29,7 +29,6 @@ public class Task implements Comparable<Task>{
 	@Column(name="task_name")
 	private String taskName;
 	
-	@NotEmpty(message="Please enter in a task description")
 	@Column(name="task_notes")
 	private String taskNotes;
 	
