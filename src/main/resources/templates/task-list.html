@@ -38,8 +38,11 @@
             <td colspan="2"> No to-do's Available </td>
         </tr>
         <tr th:each="task : ${tasks}">
+            <td th:if="${#dates.format(task.dueDate, 'MM/dd/yyyy')} > ${#dates.format(#dates.createNow(), 'MM/dd/yyyy')}">
+            <span th:text="${#dates.format(task.dueDate, 'MMM-dd-yyyy')}"> Date </span></td>
             
-            <td><span th:text="${#dates.format(task.dueDate, 'MMM-dd-yyyy')}"> Date </span></td>
+            <td class="dueNow" th:if="${#dates.format(task.dueDate, 'MM/dd/yyyy')} <= ${#dates.format(#dates.createNow(), 'MM/dd/yyyy')}">
+            <span th:text="${#dates.format(task.dueDate, 'MMM-dd-yyyy')}"> Date </span></td>
             
             <td><span th:text="${task.taskName}"> Name </span></td>
             <td><span th:text="${task.taskNotes}"> Notes </span></td>
@@ -59,6 +62,7 @@
 	</div>
 	
 	<div th:replace="fragments/scripts" />
+	
 	
 </body>
 </html>
